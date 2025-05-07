@@ -1,6 +1,20 @@
+:root{
+  --primary:#fd6f00;
+}
+
 .cal-sans-regular {
   font-family: "Cal Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
    font-size: xx-large;
 }
+.typing-effect {
+  font-family: "Cal Sans", sans-serif;
+  font-size: 24px;
+  border-right: 3px solid var(--primary);
+    white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+.nav-link:hover {
+  color: var(--primary) !important; }
