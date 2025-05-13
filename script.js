@@ -11,7 +11,7 @@ function typeText() {
     if (charIndex < currentText.length) {
         document.getElementById("typing-text").textContent += currentText.charAt(charIndex);
         charIndex++;
-        setTimeout(typeText, 100); /
+        setTimeout(typeText, 100); 
     } else {
         setTimeout(() => {
             charIndex = 0;
