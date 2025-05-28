@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#2563eb" />
     <title>Portfolio - Devaraj Bhojanapu</title>
     <link rel="icon" type="image/x-icon" href="IMG/Fav.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,7 +38,7 @@
             Bhojanapu Deva Raj
         </p>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,7 +67,7 @@
 
 <!-- Home -->
 <div class="container mt-5 pt-5" id="home">
-    <div class="row align-items-center">
+    <div class="row align-items-center g-4">
         <div class="col-12 col-md-6 mb-4 mb-md-0" data-aos="fade-right">
             <p class="ms-2 mb-1 text-light">Hi, I'm</p>
             <h1 class="fw-bold">Bhojanapu Deva Raj</h1>
@@ -80,16 +81,16 @@
             </div>
         </div>
         <div class="col-12 col-md-6 text-center" data-aos="fade-left">
-            <img src="IMG/User.jpg" alt="User Image" class="img-fluid rounded shadow" style="max-width: 100%; height: auto" />
+            <img src="IMG/User.jpg" alt="User Image" class="img-fluid rounded shadow" style="max-width: 100%; height: auto" loading="lazy" />
         </div>
     </div>
 </div>
 
 <!-- About Me -->
-<section class="container-fluid mt-5 col-md-10" id="about" data-aos="fade">
+<section class="container mt-5 col-10 ps-5 pt-5" id="about" data-aos="fade">
     <div class="row">
         <!-- About Description -->
-        <div class="col-12 mb-4" data-aos="fade-up">
+        <div class="col-10 mb-4" data-aos="fade-up">
             <h2 class="fw-bold">About Me ⚡</h2>
             <p class="text-wrap">
                 I am <strong>Bhojanapu Deva Raj</strong>, a Diploma graduate in Computer Engineering from
@@ -100,7 +101,7 @@
         </div>
 
         <!-- Career Objective -->
-        <div class="col-12 mb-4" data-aos="fade-up">
+        <div class="col-10 mb-4" data-aos="fade-up">
             <h2 class="fw-bold">Career Objective 🎯</h2>
             <p class="text-wrap">
                 To continuously enhance my skills and contribute effectively to the
@@ -110,7 +111,7 @@
         </div>
 
         <!-- Strengths -->
-        <div class="col-12 mb-4" data-aos="fade-up">
+        <div class="col-10 mb-4" data-aos="fade-up">
             <h2 class="fw-bold">Strengths</h2>
             <ul class="list-unstyled align-items-sm-start">
                 <li>✅ Self-Confidence</li>
@@ -121,7 +122,7 @@
         </div>
 
         <!-- Interests -->
-        <div class="col-12" data-aos="fade-up">
+        <div class="col-10" data-aos="fade-up">
             <h2 class="fw-bold">Interests ✨</h2>
             <ul class="list-unstyled ms-3">
                 <li>🎯 Learning new technologies and exploring the digital world</li>
@@ -134,7 +135,7 @@
 </section>
 
 <!-- Education -->
-<section class="container-fluid mt-5 col-md-10" id="education" data-aos="fade">
+<section class="container mt-5 col-10 p-5" id="education" data-aos="fade">
     <h2 class="fw-bold mb-4 text-center">Education</h2>
 
     <div class="timeline">
@@ -181,7 +182,7 @@
 </section>
 
 <!-- Experience -->
-<section class="container-fluid mt-5 col-md-10" id="experience" data-aos="fade">
+<section class="container mt-5 col-10 p-5" id="experience" data-aos="fade">
     <h2 class="fw-bold mb-4 text-center">Experience</h2>
 
     <div class="timeline">
@@ -217,17 +218,17 @@
 </section>
 
     <!---Skills Section-->
-    <section class="container-fluid mt-5 col-md-10" id="skills" data-aos="fade">
+    <section class="container-fluid mt-5 col-10 p-5" id="skills" data-aos="fade">
         <h2 class="fw-bold mb-4">💻 Technical Skills</h2>
         <div class="row g-4">
             <!-- Programming Languages Card -->
-            <div class="col-md-4" data-aos="fade-right">
+            <div class="col-md-4" data-aos="fade-up">
                 <div class="card shadow h-100">
                     <div class="card-body">
-                        <h5 class="card-title text-muted">🖥️ Programming Languages</h5>
-                        <div class="skills-grid">
+                        <h5 class="card-title text-muted ">🖥️ Programming Languages</h5>
+                        <div class="skills-grid d-flex flex-wrap">
                             <div class="skill-item">
-                                <div class="skill-content">
+                                <div class="skill-content ">
                                     <i class="fab fa-python fa-2x"></i>
                                     <span class="skill-name">Python</span>
                                 </div>
@@ -266,7 +267,7 @@
                 <div class="card shadow h-100">
                     <div class="card-body">
                         <h5 class="card-title text-muted">🌐 Web Development</h5>
-                        <div class="skills-grid">
+                        <div class="skills-grid d-flex flex-wrap">
                             <div class="skill-item">
                                 <div class="skill-content">
                                     <i class="fab fa-html5 fa-2x"></i>
@@ -297,15 +298,15 @@
             </div>
 
             <!-- Other Skills Card -->
-            <div class="col-md-4" data-aos="fade-left">
+            <div class="col-md-4" data-aos="fade-up">
                 <div class="card shadow h-100">
                     <div class="card-body">
                         <h5 class="card-title text-muted">🧠 Other Skills</h5>
-                        <div class="skills-grid">
+                        <div class="skills-grid d-flex flex-wrap">
                             <div class="skill-item">
                                 <div class="skill-content">
                                     <i class="fas fa-paint-brush fa-2x"></i>
-                                    <span class="skill-name">UI/UX Design</span>
+                                    <span class="skill-name text-center">UI/UX Design</span>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -339,7 +340,7 @@
         </div>
     </section>
     <!--Projects-->
-    <section class="container-fluid mt-5 col-10" id="projects"  data-aos="fade-up">
+    <section class="container mt-5 col-10" id="projects"  data-aos="fade-up">
         <h2 class="fw-bold mb-4">🛠️ Projects</h2>
 
         <div class="card shadow rounded p-3">
@@ -379,7 +380,7 @@
     </section>
 
     <!--Certificates-->
-    <section class="container-fluid mt-5 col-md-10" id="certificates"  data-aos="fade-up">
+    <section class="container-fluid mt-5 col-10" id="certificates"  data-aos="fade-up">
         <h2 class="fw-bold mb-4">🎓 Certificates</h2>
         <div class="list-unstyled">
             <div class="certificate-item d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -431,28 +432,28 @@
         </ul>
     </section>
     <!--Contact-->
-    <section class="container-fluid mt-5 col-md-10" data-aos="fade-up">
-        <h2 class="fw-bold mb-4">📬 Contact</h2>
-        <ul class="list-unstyled d-flex justify-content-center gap-4">
+    <section class="container-fluid mt-5 col-md-10 d-flex flex-wrap" data-aos="fade-up">
+        <h2 class="fw-bold mb-4 ">📬 Contact</h2>
+        <ul class="list-unstyled d-flex justify-content-center gap-3 flex-wrap">
             <li>
                 <a href="mailto:bhojanapudevaraj@gmail.com" class="text-decoration-none text-primary">
-                    <i class="fas fa-envelope fa-3x"></i> <!-- Larger icon -->
+                    <i class="fas fa-envelope fa-2x"></i> <!-- Larger icon -->
                 </a>
             </li>
             <li>
                 <a href="tel:+917396106066" class="text-decoration-none text-primary">
-                    <i class="fas fa-phone fa-3x"></i> <!-- Larger icon -->
+                    <i class="fas fa-phone fa-2x"></i> <!-- Larger icon -->
                 </a>
             </li>
             <li>
                 <a href="https://www.linkedin.com/in/bhojanapu-deva-raj-323143329" target="_blank"
                     class="text-decoration-none text-primary">
-                    <i class="fab fa-linkedin fa-3x"></i> <!-- Larger icon -->
+                    <i class="fab fa-linkedin fa-2x"></i> <!-- Larger icon -->
                 </a>
             </li>
             <li>
                 <a href="https://github.com/Devarajb049" target="_blank" class="text-decoration-none text-primary">
-                    <i class="fab fa-github fa-3x"></i> <!-- Larger icon -->
+                    <i class="fab fa-github fa-2x"></i> <!-- Larger icon -->
                 </a>
             </li>
         </ul>

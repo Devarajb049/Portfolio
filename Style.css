@@ -167,6 +167,7 @@ section h2::after {
   background: var(--background);
   border-radius: 12px;
   transition: all 0.3s ease;
+  width: 125px;
 }
 
 .skill-content:hover {
@@ -342,28 +343,29 @@ section h2::after {
     #contact textarea {
         margin-bottom: 1rem;
     }
+  }
+  .nav-link {
+  position: relative;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  color: var(--secondary) !important;
+  transition: all 0.3s ease;
 }
 
-/* Existing Contact section with list - remove later if consolidating */
-/* section.container.mt-5:nth-of-type(7) { display: none; } */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient);
+  transition: width 0.3s ease;
+}
 
-/* Remove List Styling overrides for #contact */
-/* #contact ul li { ... } */
-/* #contact ul li::before { ... } */
-
-/* Contact Form */
-/* This seems to be a duplicate and can be removed */
-/* #contact {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 3rem;
-    box-shadow: var(--shadow);
-} */
-
-/* Existing contact form styles - can integrate into the new #contact form rule */
-/* #contact input, #contact textarea { ... } */
-/* #contact input:focus, #contact textarea:focus { ... } */
-
+.nav-link:hover::after {
+  width: 100%;
+}
 /* List Styling */
 ul li {
   margin-bottom: 1rem;
@@ -465,7 +467,7 @@ a:hover {
   }
 
   .skill-content {
-    width: 100%; /* Allow skill content to take full width in grid item */
+    width: 100px; /* Allow skill content to take full width in grid item */
     max-width: 200px; /* Optional: limit max width */
   }
 }
@@ -832,4 +834,220 @@ section {
   #contact .list-unstyled {
     justify-content: center; /* Center contact icons */
   }
+
+  /* Ensure lists in About Me section are left-aligned */
+  #about ul {
+      text-align: left;
+  }
+
+  #about ul li {
+      text-align: left;
+      justify-content: flex-start; /* Ensure content within list item is left-aligned if using flexbox */
+  }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1200px) {
+    .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    section {
+        padding: 4rem 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar .container-fluid {
+        padding: 0.5rem 1rem;
+    }
+
+    .cal-sans-regular {
+        font-size: 1.8rem;
+    }
+
+    #home h1 {
+        font-size: 2.8rem;
+    }
+
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+    }
+
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+    }
+
+    .nav-link:hover {
+        background: var(--background);
+    }
+}
+
+@media (max-width: 768px) {
+    #home {
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    #home h1 {
+        font-size: 2.5rem;
+    }
+
+    #home .btns {
+        justify-content: center;
+    }
+
+    section {
+        padding: 3rem 1rem;
+        margin: 10px auto; /* Adjust margin for centering */
+        width: 80%; /* Set width to 80% */
+        box-sizing: border-box; /* Include padding and border in element's total width */
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .skill-content {
+        padding: 0.8rem;
+    }
+
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+    }
+
+    .timeline-item .timeline-dot {
+        left: 15px;
+    }
+
+    .timeline-content {
+        width: 100%;
+    }
+
+    #contact .list-unstyled {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    #contact form {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .cal-sans-regular {
+        font-size: 1.5rem;
+    }
+
+    #home h1 {
+        font-size: 2rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        padding-left: 60px;
+    }
+
+    .timeline-dot {
+        width: 30px;
+        height: 30px;
+    }
+
+    .timeline-dot i {
+        font-size: 0.8rem;
+    }
+
+    #contact input,
+    #contact textarea {
+        font-size: 0.9rem;
+    }
+}
+
+/* Fix for very small devices */
+@media (max-width: 360px) {
+    #home h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .btns {
+        flex-direction: column;
+    }
+
+    .timeline-content {
+        padding: 1rem;
+    }
+}
+
+/* Improve touch targets for mobile */
+@media (hover: none) {
+    .nav-link,
+    .btn,
+    .skill-item,
+    .timeline-content {
+        cursor: pointer;
+    }
+
+    .nav-link:active,
+    .btn:active,
+    .skill-item:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Fix for landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    #home {
+        min-height: auto;
+        padding: 4rem 0;
+    }
+
+    .navbar {
+        position: relative;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
 } 
