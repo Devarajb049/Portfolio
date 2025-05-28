@@ -54,6 +54,19 @@ body {
   width: 100%;
 }
 
+/* Navbar Toggler Icon Customization */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%232563eb' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+@media (max-width: 992px) {
+  .navbar-toggler:focus,
+  .navbar-toggler:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
 /* Home Section */
 #home {
   min-height: 100vh;
@@ -773,4 +786,50 @@ section {
 
 .container.mt-5:nth-of-type(8) .list-unstyled li a:hover i {
     color: var(--secondary); /* Change icon color on hover */
+}
+
+@media (max-width: 500px) {
+  section,
+  #home > .row {
+    text-align: center;
+  }
+
+  #home .col-md-6 {
+    text-align: center !important; /* Ensure text is centered in home columns */
+  }
+
+  #home .btns {
+    justify-content: center; /* Center buttons in home section */
+  }
+
+  .timeline-item {
+    align-items: center; /* Center items in timeline */
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .timeline::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item .timeline-dot {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    text-align: center;
+  }
+
+  .certificate-item {
+    flex-direction: column; /* Stack title and button vertically */
+    align-items: center; /* Center items */
+  }
+
+  #contact .list-unstyled {
+    justify-content: center; /* Center contact icons */
+  }
 } 
