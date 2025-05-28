@@ -91,7 +91,7 @@ section {
 }
 
 section h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 2rem;
   position: relative;
   display: inline-block;
@@ -212,42 +212,166 @@ section h2::after {
   background: #e2e8f0;
 }
 
-/* Contact Form */
-#contact {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 3rem;
-  box-shadow: var(--shadow);
+/* Contact */
+#contact.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#contact h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+#contact .list-unstyled {
+    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+#contact .list-unstyled li {
+    margin-bottom: 0;
+    position: relative;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#contact .list-unstyled li i {
+    position: relative;
+    left: auto;
+    font-size: 1.8rem;
+    top: auto;
+    transform: none;
+    color: var(--primary);
+}
+
+#contact .list-unstyled li a {
+    font-size: 1.1rem;
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#contact .list-unstyled li a:hover {
+    color: var(--primary);
+}
+
+#contact form {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+#contact label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--secondary);
 }
 
 #contact input,
 #contact textarea {
-  width: 100%;
-  padding: 1rem;
-  border: 2px solid var(--primary-light);
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--background);
+    color: var(--secondary);
 }
 
 #contact input:focus,
 #contact textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(253, 111, 0, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
 }
+
+#contact .btn-primary {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Adjust responsive padding for section */
+@media (max-width: 768px) {
+    #contact.container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    #contact h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    #contact .list-unstyled {
+        gap: 1.5rem;
+    }
+    #contact .list-unstyled li {
+        gap: 0.8rem;
+    }
+    #contact form {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+    #contact input,
+    #contact textarea {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Existing Contact section with list - remove later if consolidating */
+/* section.container.mt-5:nth-of-type(7) { display: none; } */
+
+/* Remove List Styling overrides for #contact */
+/* #contact ul li { ... } */
+/* #contact ul li::before { ... } */
+
+/* Contact Form */
+/* This seems to be a duplicate and can be removed */
+/* #contact {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+} */
+
+/* Existing contact form styles - can integrate into the new #contact form rule */
+/* #contact input, #contact textarea { ... } */
+/* #contact input:focus, #contact textarea:focus { ... } */
 
 /* List Styling */
 ul li {
   margin-bottom: 1rem;
   position: relative;
   padding-left: 1.5rem;
+  list-style: none;
 }
 
 ul li::before {
-  content: '•';
-  color: var(--primary);
-  position: absolute;
-  left: 0;
+  content: none !important;
+  /* Keep other styles but they won't be applied with content: none */
+  /* color: var(--primary); */
+  /* position: absolute; */
+  /* left: 0; */
+}
+
+/* Ensure no list styles are applied to any ul */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* Remove custom dots from navbar list */
@@ -282,6 +406,23 @@ a:hover {
   
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Certificates section adjustments for smaller screens */
+  #certificates .certificate-item {
+    flex-direction: column; /* Stack title and button vertically */
+    align-items: flex-start; /* Align items to the start */
+    gap: 0.5rem; /* Space between title and button */
+  }
+
+  #certificates .certificate-item span {
+      margin-bottom: 0.5rem; /* Add space below the title */
+  }
+
+  #certificates .certificate-item .btn {
+    width: auto; /* Allow button to size based on content */
+    padding: 0.5rem 1rem; /* Smaller padding for button */
+    font-size: 0.9rem; /* Smaller font size for button */
   }
 }
 
@@ -476,34 +617,34 @@ section {
     content: '';
     position: absolute;
     width: 4px;
-    background: #e5e7eb; /* Light gray line */
+    background: #e5e7eb;
     top: 0;
     bottom: 0;
-    left: 25px; /* Position line on the left */
+    left: 25px;
     z-index: -1;
 }
 
 .timeline-item {
     padding: 20px 10px;
     position: relative;
-    width: 95%; /* Take up most of the width on the right */
-    left: 5%; /* Push items to the right */
+    width: 95%;
+    left: 5%;
     margin-bottom: 40px;
 }
 
 .timeline-item.left,
 .timeline-item.right {
-    left: 5%; /* Ensure all items are on the right */
-    padding-right: 10px; /* Adjust padding */
-    padding-left: 60px; /* Keep space for icon on the left */
+    left: 5%;
+    padding-right: 10px;
+    padding-left: 60px;
 }
 
 .timeline-dot {
     position: absolute;
-    top: 15px; /* Adjust position */
+    top: 15px;
     transform: translateY(-50%);
-    width: 50px; /* Size of the circular icon background */
-    height: 50px; /* Size of the circular icon background */
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: var(--primary);
     z-index: 1;
@@ -511,18 +652,18 @@ section {
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    left: 0px; /* Position dot on the left */
+    left: 0px;
 }
 
 .timeline-item.left .timeline-dot,
 .timeline-item.right .timeline-dot {
-    left: 0px; /* Ensure dots are on the left */
+    left: 0px;
     right: auto;
 }
 
 .timeline-dot i {
-    color: white; /* Icon color */
-    font-size: 24px; /* Icon size */
+    color: white;
+    font-size: 24px;
 }
 
 .timeline-content {
@@ -532,7 +673,7 @@ section {
     padding: 20px;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
-    top: -30px; /* Pull card up to align with dot */
+    top: -30px;
 }
 
 .timeline-content:hover {
@@ -543,30 +684,62 @@ section {
 /* Responsive adjustments for timeline */
 @media (max-width: 768px) {
     .timeline::after {
-        left: 25px; /* Adjust line position */
+        left: 25px;
     }
 
     .timeline-item {
         width: 100%;
-        padding-left: 70px; /* Space for icon */
+        padding-left: 70px;
         padding-right: 10px;
         margin-bottom: 30px;
-        left: 0; /* Align to left on mobile */
+        left: 0;
     }
 
     .timeline-item.left,
     .timeline-item.right {
-        left: 0; /* Ensure all items are on the left on mobile */
+        left: 0;
     }
 
     .timeline-item .timeline-dot {
-        left: 25px; /* Align dots to the new line position */
+        left: 25px;
         right: auto;
-        top: 25px; /* Center vertically in mobile view */
-        transform: translate(-50%, -50%); /* Adjust transform for new left position */
+        top: 25px;
+        transform: translate(-50%, -50%);
     }
 
     .timeline-content {
-        top: 0; /* Remove pull up on mobile */
+        top: 0;
     }
+}
+
+/* Adjust heading sizes */
+#education h2,
+#experience h2,
+#awards h2,
+#certificates h2,
+#contact h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Responsive adjustments for headings */
+@media (max-width: 768px) {
+    #education h2,
+    #experience h2,
+    #awards h2,
+    #certificates h2,
+    #contact h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Style for icons in the first contact list */
+.container.mt-5:nth-of-type(8) .list-unstyled i {
+    font-size: 2rem; /* Smaller icon size */
+    transition: color 0.3s ease;
+}
+
+.container.mt-5:nth-of-type(8) .list-unstyled li a:hover i {
+    color: var(--secondary); /* Change icon color on hover */
 } 
