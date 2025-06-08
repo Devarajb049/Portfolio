@@ -131,6 +131,7 @@ section h2::after {
   gap: 1.5rem;
   align-items: center;
 }
+
 .skills-card:hover {
   transform: translateY(-5px);
 }
@@ -409,6 +410,7 @@ section h2::after {
   0% {
     transform: rotate(0deg) translateX(250px) rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg) translateX(250px) rotate(-360deg);
   }
@@ -418,6 +420,7 @@ section h2::after {
   0% {
     transform: rotate(45deg) translateX(180px) rotate(-45deg);
   }
+
   100% {
     transform: rotate(405deg) translateX(180px) rotate(-405deg);
   }
@@ -427,6 +430,7 @@ section h2::after {
   0% {
     transform: rotate(90deg) translateX(300px) rotate(-90deg);
   }
+
   100% {
     transform: rotate(450deg) translateX(300px) rotate(-450deg);
   }
@@ -436,6 +440,7 @@ section h2::after {
   0% {
     transform: rotate(135deg) translateX(150px) rotate(-135deg);
   }
+
   100% {
     transform: rotate(495deg) translateX(150px) rotate(-495deg);
   }
@@ -445,6 +450,7 @@ section h2::after {
   0% {
     transform: rotate(180deg) translateX(200px) rotate(-180deg);
   }
+
   100% {
     transform: rotate(540deg) translateX(200px) rotate(-540deg);
   }
@@ -454,6 +460,7 @@ section h2::after {
   0% {
     transform: rotate(225deg) translateX(120px) rotate(-225deg);
   }
+
   100% {
     transform: rotate(585deg) translateX(120px) rotate(-585deg);
   }
