@@ -700,12 +700,13 @@ section h2::after {
 
 .contact-wrapper .list-unstyled li a:hover {
   transform: translateY(-3px);
-  background: var(--gradient);
+  background: var(--secondary);
   box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
 }
 
 .contact-wrapper .list-unstyled li a:hover i {
   color: white;
+  
 }
 
 .contact-wrapper .list-unstyled li a i {
