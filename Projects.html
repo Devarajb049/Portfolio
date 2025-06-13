@@ -23,7 +23,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="Style.css" />
-
+    <style>
+        .img-fixed {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            filter: blur(1px)
+        }
+    </style>
 </head>
 
 <body>
@@ -69,71 +77,108 @@
         </div>
     </nav>
     <!--Projects-->
-    <section class="container col-10 p-5" id="projects" data-aos="fade-up">
-        <h2 class="fw-bold mb-4">🛠️ Projects</h2>
+    <section class="container mt-5 col-10" id="projects">
+        <h2 class="text-center fw-bold mb-4 mt-4" data-aos="fade-up">📜 My Projects</h2>
+        <div class="row g-4">
 
-        <div class="card shadow rounded p-3 text-start">
-            <h5 class="fw-semibold">College Sports and Games Registration Website</h5>
-            <h6 class="text-muted mb-1">Final Year Project – Dr. Y C James Yen Govt Polytechnic, Kuppam</h6>
-            <p class="mb-1">📅 <strong>November 2024 – March 2025</strong></p>
-            <p class="mb-2"><strong>Role:</strong> Team Leader | <strong>Team Size:</strong> 5 members</p>
-            <a href="https://collegesportsregistration.netlify.app/" target="_blank"
-                class="btn btn-sm btn-outline-primary" style="width: 180px">
-                Visit Project &nbsp; &nbsp;
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
+            <!-- Project 1 -->
+            <div class="col-sm-12 col-md-6 col-lg-4" data-aos="zoom-in">
+                <div class="card shadow-sm h-100 text-center p-3">
+                    <img src="Projects/Diploma.png" class="card-img-top img-fixed mx-auto" alt="Sports Registration">
+                    <div class="card-body">
+                        <h5 class="card-title">College Sports and Games Registration Website</h5>
+                        <p class="text-muted mb-2">Tech Stack: HTML, CSS, JS, Bootstrap, PHP, SQL</p>
+                        <div class="btns d-flex justify-content-center flex-wrap">
+                            <a href="https://github.com/Devarajb049/sportsandgamesreg" class="btn btn-dark m-1">View
+                                Repository</a>
+                            <a href="http://sportsregistration.free.nf/" class="btn btn-primary m-1">View Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="card shadow rounded p-3 text-start mt-4">
-            <h5 class="fw-semibold">Portfolio</h5>
-            <p class="mb-1">A portfolio website to showcase skills and projects.</p>
-            <a href="https://devarajb049.github.io/Portfolio/" class="btn btn-sm btn-outline-primary"
-                style="width: 180px">
-                Visit Project &nbsp; &nbsp;
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
+            <!-- Project 2 -->
+            <div class="col-sm-12 col-md-6 col-lg-4" data-aos="zoom-in">
+                <div class="card shadow-sm h-100 text-center p-3">
+                    <img src="Projects/Portfolio-1.png" class="card-img-top img-fixed mx-auto" alt="Portfolio">
+                    <div class="card-body">
+                        <h5 class="card-title">Portfolio Website</h5>
+                        <p class="text-muted mb-2">Tech Stack: HTML, CSS, JS, AOS</p>
+                        <div class="btns d-flex justify-content-center flex-wrap">
+                            <a href="https://github.com/devarajb049/Portfolio" class="btn btn-dark m-1">View
+                                Repository</a>
+                            <a href="https://devarajb049.github.io/Portfolio/" class="btn btn-primary m-1">View Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="card shadow rounded p-3 text-start mt-4">
-            <h5 class="fw-semibold">Calculator</h5>
-            <p class="mb-1">A simple calculator web app built with HTML, CSS, and JavaScript.</p>
-            <a href="https://devarajb049.github.io/Calculator/" class="btn btn-sm btn-outline-primary"
-                style="width: 180px">
-                Visit Project &nbsp; &nbsp;
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
+            <!-- Project 3 -->
+            <div class="col-sm-12 col-md-6 col-lg-4" data-aos="zoom-in">
+                <div class="card shadow-sm h-100 text-center p-3">
+                    <img src="Projects/Calculator.png" class="card-img-top img-fixed mx-auto" alt="Calculator">
+                    <div class="card-body">
+                        <h5 class="card-title">Calculator Web App</h5>
+                        <p class="text-muted mb-2">Tech Stack: HTML, CSS, JavaScript</p>
+                        <div class="btns d-flex justify-content-center flex-wrap">
+                            <a href="https://github.com/devarajb049/Calculator" class="btn btn-dark m-1">View
+                                Repository</a>
+                            <a href="https://devarajb049.github.io/Calculator/" class="btn btn-primary m-1">View
+                                Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="card shadow rounded p-3 text-start mt-4">
-            <h5 class="fw-semibold">Portfolio</h5>
-            <p class="mb-1">A modern responsive portfolio with advanced UI/UX and animations.</p>
-            <a href="https://devarajb049.github.io/devarajportfolio/" class="btn btn-sm btn-outline-primary"
-                style="width: 180px">
-                Visit Project &nbsp; &nbsp;
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
+            <!-- Project 4 -->
+            <div class="col-sm-12 col-md-6 col-lg-4" data-aos="zoom-in">
+                <div class="card shadow-sm h-100 text-center p-3">
+                    <img src="Projects/Portfolio-2.png" class="card-img-top img-fixed mx-auto" alt="Modern Portfolio">
+                    <div class="card-body">
+                        <h5 class="card-title">Modern Responsive Portfolio</h5>
+                        <p class="text-muted mb-2">Tech Stack: HTML, CSS, JS</p>
+                        <div class="btns d-flex justify-content-center flex-wrap">
+                            <a href="https://github.com/devarajb049/devarajportfolio" class="btn btn-dark m-1">View
+                                Repository</a>
+                            <a href="https://devarajb049.github.io/devarajportfolio/" class="btn btn-primary m-1">View
+                                Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 5 -->
+            <div class="col-sm-12 col-md-6 col-lg-4" data-aos="zoom-in">
+                <div class="card shadow-sm h-100 text-center p-3">
+                    <img src="Projects/Roommapper.png" class="card-img-top img-fixed mx-auto" alt="RoomMapper">
+                    <div class="card-body">
+                        <h5 class="card-title">RoomMapper</h5>
+                        <p class="text-muted mb-2">Tech Stack: HTML, CSS, JS</p>
+                        <div class="btns d-flex justify-content-center flex-wrap">
+                            <a href="https://github.com/devarajb049/RoomMapper---Smart-Exam-Hall-Seat-Allotment-System"
+                                class="btn btn-dark m-1">View Repository</a>
+                            <a href="https://devarajb049.github.io/RoomMapper---Smart-Exam-Hall-Seat-Allotment-System/"
+                                class="btn btn-primary m-1">View Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 6 -->
+            <div class="col-sm-12 col-md-6 col-lg-4" data-aos="zoom-in">
+                <div class="card shadow-sm h-100 text-center p-3">
+                    <img src="Projects/EcertVault.png" class="card-img-top img-fixed mx-auto" alt="eCertVault">
+                    <div class="card-body">
+                        <h5 class="card-title">eCertVault</h5>
+                        <p class="text-muted mb-2">Tech Stack: HTML, CSS, JS, PHP, SQL</p>
+                        <div class="btns d-flex justify-content-center flex-wrap">
+                            <a href="https://github.com/devarajb049/Certificates-Site" class="btn btn-dark m-1">View
+                                Repository</a>
+                            <a href="https://devarajb049.github.io/Certificates-Site/" class="btn btn-primary m-1">View
+                                Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="card shadow rounded p-3 text-start mt-4">
-            <h5 class="fw-semibold">eCertVault</h5>
-            <p class="mb-1">A secure and responsive login system for eCertVault, a modern web platform for storing and
-                managing certificates.</p>
-            <a href="https://devarajb049.github.io/Certificates-Site/" class="btn btn-sm btn-outline-primary"
-                style="width: 180px">
-                Visit Project &nbsp; &nbsp;
-                <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
-
-        <div class="card shadow rounded p-3 text-start mt-4">
-            <h5 class="fw-semibold">RoomMapper</h5>
-            <p class="mb-1">RoomMapper is a smart, responsive web application that simplifies the process of exam hall
-                seat allotment.</p>
-            <a href="https://devarajb049.github.io/RoomMapper---Smart-Exam-Hall-Seat-Allotment-System/"
-                class="btn btn-sm btn-outline-primary" style="width: 180px">
-                Visit Project &nbsp; &nbsp;
-                <i class="fas fa-external-link-alt"></i>
-            </a>
         </div>
     </section>
 
