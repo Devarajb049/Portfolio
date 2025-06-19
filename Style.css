@@ -54,7 +54,8 @@ a:hover {
   content: '';
   position: absolute;
   bottom: -2px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 2px;
   background: var(--gradient);
@@ -64,6 +65,7 @@ a:hover {
 .nav-link:hover::after {
   width: 100%;
 }
+
 
 /* Navbar Toggler Icon Customization */
 .navbar-toggler-icon {
@@ -536,9 +538,24 @@ section h2::after {
   color: white;
   font-size: 24px;
 }
- #projects,#certificates{
+
+#projects,
+#certificates {
   margin-top: 100px !important;
- }
+}
+
+/*Projects Filter*/
+.filter-btn:hover {
+  color: white !important;
+}
+#projects .col-sm-12 {
+  transition: all 0.3s ease;
+}
+.filter-btn.btn-primary {
+  color: #fff !important;
+}
+
+
 .timeline-content {
   position: relative;
   background: var(--card-bg);
@@ -706,7 +723,7 @@ section h2::after {
 
 .contact-wrapper .list-unstyled li a:hover i {
   color: white;
-  
+
 }
 
 .contact-wrapper .list-unstyled li a i {
