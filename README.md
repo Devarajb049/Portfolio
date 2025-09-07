@@ -29,20 +29,19 @@ Check out the live website: [Devaraj's Portfolio](https://devarajbhojanapuportfo
 
 ```bash
 git clone https://github.com/Devarajb049/Portfolio
+```
 Navigate to the project directory:
 
+```bash
 cd Portfolio
-
-
+```
 Open index.html in your browser to view the portfolio.
 
 📄 License
 
 This project does not have a specified license.
 
-👤 Author
-
-Devarajb049
+👤 Author: Devarajb049
 
 GitHub: @Devarajb049
 
