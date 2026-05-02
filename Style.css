@@ -13,6 +13,38 @@ body {
   color: var(--secondary);
   line-height: 1.6;
 }
+/* Main cursor */
+.cursor{
+    width:15px;
+    height:15px;
+    background:#2563eb;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:999;
+    box-shadow:0 0 15px #2563eb,0 0 30px #2563eb,0 0 45px #2563eb;
+}
+
+/* Trail effect */
+.trail{
+    width:8px;
+    height:8px;
+    background:#3b82f6;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    opacity:0.6;
+    animation:fadeOut 0.5s linear forwards;
+}
+
+@keyframes fadeOut{
+    to{
+        transform:translate(-50%,-50%) scale(0);
+        opacity:0;
+    }
+}
 
 a,
 a:visited,
