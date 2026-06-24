@@ -275,7 +275,7 @@ function initSmoothScroll() {
   });
 }
 
-// Hook into Bootstrap modal events to update the SlideTabs navbar active page!
+// Hook into Bootstrap modal events to update the SlideTabs navbar active page and prevent scroll-to-top bugs!
 function initModalNavbarSync() {
   const modals = [
     { id: 'skillsModal', href: '#skills' },
@@ -288,13 +288,23 @@ function initModalNavbarSync() {
   if (!navList) return;
 
   const items = navList.querySelectorAll('.nav-link');
+  let savedScrollPos = 0;
 
   modals.forEach(m => {
     const el = document.getElementById(m.id);
     if (!el) return;
 
-    // When modal is shown, update active tab
+    // Save scroll position before modal starts opening
+    el.addEventListener('show.bs.modal', () => {
+      savedScrollPos = window.scrollY;
+    });
+
+    // When modal is shown, update active tab and ensure page hasn't jumped
     el.addEventListener('shown.bs.modal', () => {
+      if (window.scrollY !== savedScrollPos) {
+        window.scrollTo(0, savedScrollPos);
+      }
+      
       items.forEach(item => item.classList.remove('active-page'));
       const activeLink = navList.querySelector(`a[href="${m.href}"]`);
       if (activeLink) {
@@ -303,14 +313,18 @@ function initModalNavbarSync() {
       }
     });
 
-    // When modal is hidden, return to home
+    // Save scroll position just before modal starts closing
+    el.addEventListener('hide.bs.modal', () => {
+      savedScrollPos = window.scrollY;
+    });
+
+    // When modal is hidden, restore scroll position and update active tab via scroll spy
     el.addEventListener('hidden.bs.modal', () => {
-      items.forEach(item => item.classList.remove('active-page'));
-      const homeLink = navList.querySelector('a[href="#home"]') || navList.querySelector('a[href="index.html"]');
-      if (homeLink) {
-        homeLink.classList.add('active-page');
-        window.updateNavbarIndicator();
-      }
+      // Restore scroll position to prevent iOS / Bootstrap scroll-to-top bugs
+      window.scrollTo(0, savedScrollPos);
+      
+      // Dynamically update active page based on actual viewport scroll position
+      handleScrollSpy();
     });
   });
 }
