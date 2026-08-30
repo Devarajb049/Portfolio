@@ -50,7 +50,9 @@
   --input-bg: #ffffff;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -173,13 +175,13 @@ body {
 /* Vertical Side Navigation Indicator Bar */
 .side-nav-indicators {
   position: fixed;
-  right: 1.75rem;
+  right: 1.5rem;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 1.1rem;
+  gap: 0.4rem;
   z-index: 999;
 }
 
@@ -344,7 +346,8 @@ body {
 }
 
 /* Links */
-.link-verify, .cred-link {
+.link-verify,
+.cred-link {
   color: var(--accent-cyan);
   font-size: 0.85rem;
   font-weight: 600;
@@ -355,7 +358,8 @@ body {
   transition: var(--transition);
 }
 
-.link-verify:hover, .cred-link:hover {
+.link-verify:hover,
+.cred-link:hover {
   color: var(--text-white);
   transform: translateX(3px);
 }
@@ -403,8 +407,17 @@ body {
 }
 
 @keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
 }
 
 .hero-title {
@@ -735,11 +748,25 @@ body {
   background: rgba(255, 255, 255, 0.05);
 }
 
-.level-0 { background: rgba(255, 255, 255, 0.05); }
-.level-1 { background: #0e4429; }
-.level-2 { background: #006d32; }
-.level-3 { background: #26a641; }
-.level-4 { background: #39d353; }
+.level-0 {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.level-1 {
+  background: #0e4429;
+}
+
+.level-2 {
+  background: #006d32;
+}
+
+.level-3 {
+  background: #26a641;
+}
+
+.level-4 {
+  background: #39d353;
+}
 
 .github-legend {
   display: flex;
@@ -1208,7 +1235,9 @@ body {
     padding: 3.5rem 0;
   }
 
-  .about-card, .github-card, .contact-card {
+  .about-card,
+  .github-card,
+  .contact-card {
     padding: 1.5rem;
   }
 }

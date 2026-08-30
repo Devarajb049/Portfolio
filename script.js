@@ -117,8 +117,8 @@ function initScrollspy() {
   if (!sections.length || !navDots.length) return;
 
   const updateActiveDot = () => {
-    let current = "";
-    const scrollPosition = window.scrollY + 250;
+    let current = "home";
+    const scrollPosition = window.scrollY + (window.innerHeight * 0.35);
 
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
@@ -127,6 +127,11 @@ function initScrollspy() {
         current = section.getAttribute("id");
       }
     });
+
+    // Check if at bottom of page
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+      current = "contact";
+    }
 
     navDots.forEach((dot) => {
       dot.classList.remove("active");
