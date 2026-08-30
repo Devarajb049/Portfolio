@@ -1,393 +1,123 @@
-AOS.init({
-  duration: 1200, // Animation duration in ms
-  once: false, // Animation only occurs once
+/* ==========================================================================
+   PANENDRA JADAV STYLE PORTFOLIO - SCRIPT LOGIC
+   Features:
+   - Floating Bottom Dock Navigation
+   - Dark/Light Theme Switcher
+   - Dynamic GitHub Activity Contribution Matrix Generator
+   - Smooth Scroll & Contact Form Handler
+   ========================================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. INITIALIZE FLOATING DOCK & THEME SWITCHER
+  initThemeToggle();
+
+  // 2. GENERATE GITHUB ACTIVITY CONTRIBUTION MATRIX
+  generateGitHubMatrix();
+
+  // 3. SMOOTH SCROLL FOR DOCK NAV
+  initSmoothScroll();
 });
 
-function openFullscreen(id) {
-  const img = document.getElementById(id);
-  if (img.requestFullscreen) {
-    img.requestFullscreen();
-  } else if (img.webkitRequestFullscreen) {
-    img.webkitRequestFullscreen();
-  } else if (img.msRequestFullscreen) {
-    img.msRequestFullscreen();
-  }
-}
-const cursor = document.querySelector(".cursor");
+/* ==========================================
+   1. THEME SWITCHER LOGIC
+   ========================================== */
+function initThemeToggle() {
+  const themeBtn = document.querySelector(".theme-toggle-btn");
+  if (!themeBtn) return;
 
-document.addEventListener("mousemove", e => {
+  const currentTheme = localStorage.getItem("portfolio_theme") || "dark";
+  document.documentElement.setAttribute("data-theme", currentTheme);
+  updateThemeIcon(currentTheme);
 
-    // Move main cursor
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+  themeBtn.addEventListener("click", () => {
+    const activeTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = activeTheme === "dark" ? "light" : "dark";
 
-    // Create trail
-    const trail = document.createElement("div");
-    trail.classList.add("trail");
-    document.body.appendChild(trail);
-
-    trail.style.left = e.clientX + "px";
-    trail.style.top = e.clientY + "px";
-
-    setTimeout(() => {
-        trail.remove();
-    }, 500);
-
-});
-
-// Timeline scroll progress animation
-function updateTimelineProgress() {
-  const timelines = document.querySelectorAll(".timeline");
-
-  timelines.forEach(timeline => {
-    // Inject progress line if not already present
-    let progressLine = timeline.querySelector(".timeline-progress-line");
-    if (!progressLine) {
-      progressLine = document.createElement("div");
-      progressLine.className = "timeline-progress-line";
-      timeline.appendChild(progressLine);
-    }
-
-    const rect = timeline.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-
-    // Trigger point: 60% of the viewport height from the top
-    const triggerPoint = viewportHeight * 0.6;
-
-    // Calculate how much the timeline has scrolled past the trigger point
-    const scrolled = triggerPoint - rect.top;
-
-    let progress = 0;
-    if (scrolled > 0) {
-      progress = Math.min(scrolled, rect.height);
-    }
-
-    // Update height of the progress line
-    progressLine.style.height = `${progress}px`;
-
-    // Toggle active state for timeline items
-    const items = timeline.querySelectorAll(".timeline-item");
-    items.forEach(item => {
-      // The item becomes active when the scroll reaches its center dot (around offsetTop + 15px)
-      const dotOffset = item.offsetTop + 15;
-      if (scrolled >= dotOffset) {
-        item.classList.add("active");
-      } else {
-        item.classList.remove("active");
-      }
-    });
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("portfolio_theme", newTheme);
+    updateThemeIcon(newTheme);
   });
 }
 
-// Slide Tabs Indicator logic for Navbar
-function initSlideNavbar() {
-  const navList = document.querySelector('.nav-list');
-  if (!navList) return;
+function updateThemeIcon(theme) {
+  const icon = document.querySelector(".theme-toggle-btn i");
+  if (!icon) return;
 
-  const indicator = document.querySelector('.nav-indicator');
-  const items = navList.querySelectorAll('.nav-link');
-
-  // Helper function to move indicator to a specific element
-  function moveIndicator(element) {
-    if (!element || !indicator) return;
-    const parentRect = navList.getBoundingClientRect();
-    const elementRect = element.getBoundingClientRect();
-
-    // Check if vertical or horizontal (vertical on mobile, horizontal on desktop)
-    const isMobile = window.innerWidth <= 991.98;
-    if (isMobile) {
-      indicator.style.opacity = '0';
-      return;
-    }
-
-    const leftPosition = elementRect.left - parentRect.left;
-    const width = elementRect.width;
-
-    indicator.style.left = `${leftPosition}px`;
-    indicator.style.width = `${width}px`;
-    indicator.style.opacity = '1';
-  }
-
-  // Expose indicator move globally so scroll spy can update it
-  window.updateNavbarIndicator = () => {
-    const activeItem = navList.querySelector('.nav-link.active-page');
-    if (activeItem) {
-      moveIndicator(activeItem);
-    }
-  };
-
-  // Position indicator at active item initially
-  window.updateNavbarIndicator();
-
-  // Add hover events to items
-  items.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      moveIndicator(item);
-      items.forEach(i => i.classList.remove('hovered-item'));
-      item.classList.add('hovered-item');
-    });
-
-    item.addEventListener('mouseleave', () => {
-      item.classList.remove('hovered-item');
-    });
-  });
-
-  // Track hover state of the entire list to prevent scroll spy overrides
-  navList.addEventListener('mouseenter', () => {
-    navList.classList.add('hovered-list');
-  });
-
-  // When mouse leaves the entire navbar list, return to active item
-  navList.addEventListener('mouseleave', () => {
-    navList.classList.remove('hovered-list');
-    items.forEach(i => i.classList.remove('hovered-item'));
-    window.updateNavbarIndicator();
-  });
-
-  // Recalculate position on window resize
-  window.addEventListener('resize', () => {
-    window.updateNavbarIndicator();
-  });
-}
-
-// Scroll Spy / Active Section Tracker
-function handleScrollSpy() {
-  const navList = document.querySelector('.nav-list');
-  if (!navList) return;
-
-  // Skip updating active links when user is hovering over menu
-  if (navList.classList.contains('hovered-list')) return;
-
-  const scrollPosition = window.scrollY + 250; // offset trigger point
-  
-  const sections = [
-    { id: 'home', link: navList.querySelector('a[href="#home"]') },
-    { id: 'skills', link: navList.querySelector('a[href="#skills"]') },
-    { id: 'certificates', link: navList.querySelector('a[href="#certificates"]') },
-    { id: 'projects', link: navList.querySelector('a[href="#projects"]') },
-    { id: 'contact', link: navList.querySelector('a[href="#contact"]') }
-  ];
-
-  let currentSectionId = 'home';
-
-  sections.forEach(section => {
-    const el = document.getElementById(section.id);
-    if (el && el.offsetTop <= scrollPosition) {
-      currentSectionId = section.id;
-    }
-  });
-
-  const items = navList.querySelectorAll('.nav-link');
-  let changed = false;
-
-  items.forEach(item => {
-    const href = item.getAttribute('href');
-    if (href === `#${currentSectionId}`) {
-      if (!item.classList.contains('active-page')) {
-        item.classList.add('active-page');
-        changed = true;
-      }
-    } else {
-      if (item.classList.contains('active-page')) {
-        item.classList.remove('active-page');
-        changed = true;
-      }
-    }
-  });
-
-  if (changed && typeof window.updateNavbarIndicator === 'function') {
-    window.updateNavbarIndicator();
-  }
-}
-
-// Scrolled navbar state
-function handleNavbarScroll() {
-  const navbar = document.querySelector('.floating-navbar');
-  if (!navbar) return;
-
-  if (window.scrollY > 20) {
-    navbar.classList.add('scrolled');
+  if (theme === "dark") {
+    icon.className = "fas fa-sun dock-icon";
   } else {
-    navbar.classList.remove('scrolled');
+    icon.className = "fas fa-moon dock-icon";
   }
 }
 
-// Helper to open modal cleanly by ID using Bootstrap's API
-function openBentoModal(modalId) {
-  const modalEl = document.getElementById(modalId);
-  if (!modalEl) return;
-  
-  let modalInstance = bootstrap.Modal.getInstance(modalEl);
-  if (!modalInstance) {
-    modalInstance = new bootstrap.Modal(modalEl);
+/* ==========================================
+   2. GITHUB ACTIVITY MATRIX GENERATOR
+   ========================================== */
+function generateGitHubMatrix() {
+  const container = document.getElementById("github-matrix");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  // 52 weeks x 7 days = 364 cells
+  const totalCells = 364;
+
+  for (let i = 0; i < totalCells; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("github-cell");
+
+    // Randomize activity level for realistic GitHub commit graph visual
+    const rand = Math.random();
+    let level = "level-0";
+
+    if (rand > 0.85) {
+      level = "level-4";
+    } else if (rand > 0.7) {
+      level = "level-3";
+    } else if (rand > 0.5) {
+      level = "level-2";
+    } else if (rand > 0.3) {
+      level = "level-1";
+    }
+
+    cell.classList.add(level);
+    container.appendChild(cell);
   }
-  modalInstance.show();
 }
 
-// Smooth Scroll / Nav Click Modal Handler
+/* ==========================================
+   3. SMOOTH SCROLL
+   ========================================== */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
-      // If clicking home/brand, scroll smoothly to top
-      if (targetId === '#home') {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
+      if (!targetId || targetId === '#') return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }
-      else if (targetId === '#skills') {
-        openBentoModal('skillsModal');
-      } else if (targetId === '#certificates') {
-        openBentoModal('certificatesModal');
-      } else if (targetId === '#projects') {
-        openBentoModal('projectsModal');
-      } else if (targetId === '#contact') {
-        openBentoModal('contactModal');
-      } 
-      // Fallback for standard anchors
-      else {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          const offset = 85; 
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }
-      
-      // Close mobile navbar drawer if open
-      const navbarCollapse = document.getElementById('navbarNav');
-      if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-        if (bsCollapse) {
-          bsCollapse.hide();
-        }
-      }
     });
   });
 }
 
-// Hook into Bootstrap modal events to update the SlideTabs navbar active page and prevent scroll-to-top bugs!
-function initModalNavbarSync() {
-  const modals = [
-    { id: 'skillsModal', href: '#skills' },
-    { id: 'certificatesModal', href: '#certificates' },
-    { id: 'projectsModal', href: '#projects' },
-    { id: 'contactModal', href: '#contact' }
-  ];
-
-  const navList = document.querySelector('.nav-list');
-  if (!navList) return;
-
-  const items = navList.querySelectorAll('.nav-link');
-  let savedScrollPos = 0;
-
-  modals.forEach(m => {
-    const el = document.getElementById(m.id);
-    if (!el) return;
-
-    // Save scroll position before modal starts opening
-    el.addEventListener('show.bs.modal', () => {
-      savedScrollPos = window.scrollY;
-    });
-
-    // When modal is shown, update active tab and ensure page hasn't jumped
-    el.addEventListener('shown.bs.modal', () => {
-      if (window.scrollY !== savedScrollPos) {
-        window.scrollTo(0, savedScrollPos);
-      }
-      
-      items.forEach(item => item.classList.remove('active-page'));
-      const activeLink = navList.querySelector(`a[href="${m.href}"]`);
-      if (activeLink) {
-        activeLink.classList.add('active-page');
-        window.updateNavbarIndicator();
-      }
-    });
-
-    // Save scroll position just before modal starts closing
-    el.addEventListener('hide.bs.modal', () => {
-      savedScrollPos = window.scrollY;
-    });
-
-    // When modal is hidden, restore scroll position and update active tab via scroll spy
-    el.addEventListener('hidden.bs.modal', () => {
-      // Restore scroll position to prevent iOS / Bootstrap scroll-to-top bugs
-      window.scrollTo(0, savedScrollPos);
-      
-      // Dynamically update active page based on actual viewport scroll position
-      handleScrollSpy();
-    });
-  });
-}
-
-// Function to open specific skills tab and open skills modal
-function openSkillsTab(tabId) {
-  const tabButtonEl = document.getElementById(`${tabId}-tab`);
-  if (tabButtonEl) {
-    const tab = new bootstrap.Tab(tabButtonEl);
-    tab.show();
-  }
-  openBentoModal('skillsModal');
-}
-
-// Contact Form WhatsApp Redirection
+/* ==========================================
+   4. CONTACT FORM WHATSAPP SUBMISSION
+   ========================================== */
 function sendWhatsApp(event) {
-  event.preventDefault(); // Prevent actual form submission
+  event.preventDefault();
 
-  const message = document.getElementById("message").value.trim();
-  const whatsappUrl = `https://wa.me/917396106066?text=${encodeURIComponent(message)}`;
+  const name = document.getElementById("contact-name")?.value || "";
+  const email = document.getElementById("contact-email")?.value || "";
+  const message = document.getElementById("contact-message")?.value || "";
+
+  const text = `Hi Deva Raj, my name is ${name} (${email}). ${message}`;
+  const whatsappUrl = `https://wa.me/917396106066?text=${encodeURIComponent(text)}`;
 
   window.open(whatsappUrl, "_blank");
 }
-
-// Bind events
-window.addEventListener("scroll", () => {
-  updateTimelineProgress();
-  handleNavbarScroll();
-  handleScrollSpy();
-});
-window.addEventListener("resize", () => {
-  updateTimelineProgress();
-  handleNavbarScroll();
-  window.updateNavbarIndicator();
-});
-window.addEventListener("load", () => {
-  updateTimelineProgress();
-  handleNavbarScroll();
-  window.updateNavbarIndicator();
-});
-
-// Force Dark Theme
-function initThemeToggle() {
-  document.documentElement.setAttribute("data-theme", "dark");
-  localStorage.setItem("theme", "dark");
-}
-
-// Run initial calculation after DOM is loaded and after a short delay to account for layout shifts
-document.addEventListener("DOMContentLoaded", () => {
-  initThemeToggle();
-  updateTimelineProgress();
-  initSlideNavbar();
-  handleNavbarScroll();
-  initSmoothScroll();
-  initModalNavbarSync();
-  handleScrollSpy();
-  
-  setTimeout(() => {
-    updateTimelineProgress();
-    if (typeof window.updateNavbarIndicator === 'function') {
-      window.updateNavbarIndicator();
-    }
-    handleNavbarScroll();
-    handleScrollSpy();
-  }, 200);
-});
