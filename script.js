@@ -14,8 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. GENERATE GITHUB ACTIVITY CONTRIBUTION MATRIX
   generateGitHubMatrix();
 
-  // 3. SMOOTH SCROLL FOR DOCK NAV
+  // 3. SMOOTH SCROLL & SCROLLSPY
   initSmoothScroll();
+  initScrollspy();
 });
 
 /* ==========================================
@@ -107,7 +108,40 @@ function initSmoothScroll() {
 }
 
 /* ==========================================
-   4. CONTACT FORM WHATSAPP SUBMISSION
+   4. SCROLLSPY SECTION HIGHLIGHTING
+   ========================================== */
+function initScrollspy() {
+  const sections = document.querySelectorAll("section[id]");
+  const navDots = document.querySelectorAll(".side-nav-dot");
+
+  if (!sections.length || !navDots.length) return;
+
+  const updateActiveDot = () => {
+    let current = "";
+    const scrollPosition = window.scrollY + 250;
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navDots.forEach((dot) => {
+      dot.classList.remove("active");
+      if (dot.getAttribute("data-section") === current) {
+        dot.classList.add("active");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", updateActiveDot);
+  updateActiveDot();
+}
+
+/* ==========================================
+   5. CONTACT FORM WHATSAPP SUBMISSION
    ========================================== */
 function sendWhatsApp(event) {
   event.preventDefault();

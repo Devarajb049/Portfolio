@@ -170,6 +170,78 @@ body {
   margin: 0 0.15rem;
 }
 
+/* Vertical Side Navigation Indicator Bar */
+.side-nav-indicators {
+  position: fixed;
+  right: 1.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.1rem;
+  z-index: 999;
+}
+
+.side-nav-dot {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  position: relative;
+  padding: 0.2rem 0;
+  cursor: pointer;
+}
+
+.dot-line {
+  display: block;
+  height: 3px;
+  width: 14px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-pill);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dot-tooltip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f8fafc;
+  background: rgba(18, 18, 18, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-6px);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+[data-theme="light"] .dot-line {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .dot-tooltip {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #0f172a;
+}
+
+.side-nav-dot:hover .dot-line,
+.side-nav-dot.active .dot-line {
+  width: 32px;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+}
+
+.side-nav-dot:hover .dot-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
 /* Light Theme Dock Styling Override */
 [data-theme="light"] .floating-dock-nav {
   background: rgba(255, 255, 255, 0.88);
@@ -1109,6 +1181,10 @@ body {
   .journey-item.right .journey-dot {
     left: 13px;
     right: auto;
+  }
+
+  .side-nav-indicators {
+    display: none;
   }
 }
 
