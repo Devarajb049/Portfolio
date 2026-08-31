@@ -113,6 +113,47 @@ body {
   scrollbar-color: rgba(0, 0, 0, 0.25) var(--bg-black);
 }
 
+/* Ambient Cursor Background Spotlight Glow */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  margin-top: -300px;
+  margin-left: -300px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle at center,
+      rgba(6, 182, 212, 0.18) 0%,
+      rgba(139, 92, 246, 0.12) 35%,
+      rgba(59, 130, 246, 0.04) 60%,
+      transparent 75%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  will-change: transform;
+  filter: blur(10px);
+}
+
+[data-theme="light"] .cursor-glow {
+  background: radial-gradient(circle at center,
+      rgba(6, 182, 212, 0.14) 0%,
+      rgba(59, 130, 246, 0.08) 40%,
+      transparent 75%);
+}
+
+.portfolio-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+@media (pointer: coarse) {
+  .cursor-glow {
+    display: none !important;
+  }
+}
+
 /* Container */
 .container {
   width: min(92%, 1100px);

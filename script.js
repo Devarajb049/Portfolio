@@ -8,6 +8,9 @@
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  // 0. INITIALIZE CURSOR BACKGROUND SPOTLIGHT GLOW
+  initCursorGlow();
+
   // 1. INITIALIZE FLOATING DOCK & THEME SWITCHER
   initThemeToggle();
 
@@ -159,4 +162,46 @@ function sendWhatsApp(event) {
   const whatsappUrl = `https://wa.me/917396106066?text=${encodeURIComponent(text)}`;
 
   window.open(whatsappUrl, "_blank");
+}
+
+/* ==========================================
+   6. CURSOR BACKGROUND FOLLOW ANIMATION
+   ========================================== */
+function initCursorGlow() {
+  const glow = document.getElementById("cursor-glow");
+  if (!glow) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let currentX = mouseX;
+  let currentY = mouseY;
+  let isMoving = false;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    document.documentElement.style.setProperty("--mouse-x", `${mouseX}px`);
+    document.documentElement.style.setProperty("--mouse-y", `${mouseY}px`);
+
+    if (!isMoving) {
+      isMoving = true;
+      glow.style.opacity = "1";
+    }
+  });
+
+  window.addEventListener("mouseleave", () => {
+    isMoving = false;
+    glow.style.opacity = "0";
+  });
+
+  function animate() {
+    // Smooth LERP movement physics for responsive fluid follow effect
+    currentX += (mouseX - currentX) * 0.12;
+    currentY += (mouseY - currentY) * 0.12;
+
+    glow.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 }
